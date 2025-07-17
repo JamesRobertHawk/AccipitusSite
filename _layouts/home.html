@@ -1,0 +1,135 @@
+---
+layout: defaultwcolumns
+---
+
+
+
+  
+<div id="wrapperpage-contentmain">
+  <h1>News</h1>
+  <p>
+    It's official, Chaos The Devil is now 'coming soon'! Wishlist now!!
+  </p>
+  <iframe src="https://store.steampowered.com/widget/3849330/" frameborder="0" width="100%" height="190"></iframe>
+  <h1>Featured Posts</h1>
+</div>
+
+{% if page.featuredaccouncementpost %}
+  {% for post in site.posts %}
+      {% if post.title == page.featuredaccouncementpost %}
+        
+          <div class="homeFeaturedPost" id="wrapperhomepage-contentleft1">
+            <a class="cardlink" href="{{ post.url }}">
+            <div class="column-contents">
+              <h1>Announcement</h1>
+              <div class="">
+                <h2>{{ post.title }}</h2>
+                <p class="author">
+                  <span class="date">{{ post.date }}</span>
+                </p>
+                <img src="{{- post.image | relative_url -}}" alt="" class="">
+                
+                <div class="blogpage-entry">
+                
+                  <div class="blog-extract-content">
+                    {{ post.content | strip_html | truncatewords: 50 }}
+                  </div>
+                </div>
+              </div>
+          </div>
+        </a>
+        </div>
+      
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if page.featureddevblogpost %}
+  {% for post in site.posts %}
+      {% if post.title == page.featureddevblogpost %}
+        
+          <div class="homeFeaturedPost" id="wrapperhomepage-contentright1">
+            <a class="cardlink" href="{{ post.url }}">
+            <div class="column-contents">
+              <h1>Development</h1>
+              <div class="">
+                <h2>{{ post.title }}</h2>
+                <p class="author">
+                  <span class="date">{{ post.date }}</span>
+                </p>
+                <img src="{{- post.image | relative_url -}}" alt="" class="">
+                
+                <div class="blogpage-entry">
+                
+                  <div class="blog-extract-content">
+                    {{ post.content | strip_html | truncatewords: 50 }}
+                  </div>
+                </div>
+              </div>
+          </div>
+        </a>
+        </div>
+      
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if page.featuredartpost %}
+  {% for post in site.posts %}
+      {% if post.title == page.featuredartpost %}
+        
+          <div class="homeFeaturedPost" id="wrapperhomepage-contentleft2">
+            <a class="cardlink" href="{{ post.url }}">
+            <div class="column-contents">
+              <h1>Art</h1>
+              <div class="">
+                <h2>{{ post.title }}</h2>
+                <p class="author">
+                  <span class="date">{{ post.date }}</span>
+                </p>
+                <img src="{{- post.image | relative_url -}}" alt="" class="">
+                
+                <div class="blogpage-entry">
+                
+                  <div class="blog-extract-content">
+                    {{ post.content | strip_html | truncatewords: 50 }}
+                  </div>
+                </div>
+              </div>
+          </div>
+        </a>
+        </div>
+      
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if page.featuredaudiopost %}
+  {% for post in site.posts %}
+      {% if post.title == page.featuredaudiopost %}
+        
+          <div class="homeFeaturedPost" id="wrapperhomepage-contentright2">
+            <a class="cardlink" href="{{ post.url }}">
+            <div class="column-contents">
+              <h1>Audio</h1>
+              <div class="">
+                <h2>{{ post.title }}</h2>
+                <p class="author">
+                  <span class="date">{{ post.date }}</span>
+                </p>
+                <img src="{{- post.image | relative_url -}}" alt="" class="">
+                
+                <div class="blogpage-entry">
+                
+                  <div class="blog-extract-content">
+                    {{ post.content | strip_html | truncatewords: 50 }}
+                  </div>
+                </div>
+              </div>
+          </div>
+        </a>
+        </div>
+      
+    {% endif %}
+  {% endfor %}
+{% endif %}

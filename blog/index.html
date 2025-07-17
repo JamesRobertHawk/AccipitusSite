@@ -1,0 +1,47 @@
+---
+layout: default
+image: /assets/Images/LittleDevilCover.jpg
+---
+
+<!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
+  <div class="blogpage-entry">
+    <a class="cardlink" href="{{ post.url }}">
+      <div class="blogpage-entry-title">
+        <img src="{{- post.image | relative_url -}}" alt="" class="blog-image">
+        <h1>{{ post.title }}</h1>
+        <p class="author">
+          <span class="date">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            {{ post.date | date: date_format}}
+          </span>
+        </p>
+        <br>
+      </div>
+    
+    <div class="blog-extract-content">
+      {{ post.content | strip_html | truncatewords: 50 }}
+    </div>
+    </a>
+  </div>
+  <hr>
+{% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">
+      Previous
+    </a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
+    <span class="next ">Next</span>
+  {% endif %}
+</div>

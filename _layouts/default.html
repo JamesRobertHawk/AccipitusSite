@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <!-- Slide Show or featured image header-->
+    {%- if page.image -%}
+      <!-- Show featured image -->
+      <img src="{{page.image | relative_url}}" alt="" class="page-featured-image">
+
+      {%- if page.title -%}
+        {%- if page.nextpost -%}
+          <!--Blog post-->
+          <h2 class="page-tagline">Post</h2>
+        {%- else -%}
+          <!--Normal page-->
+          <h2 class="page-tagline">{{ page.title }}</h2>
+        {%- endif -%}
+
+      {%- else -%}
+        <!--Blog home-->
+        <h2 class="page-tagline">Blog</h2>
+      {%- endif -%}
+    {%- else -%}
+      <!-- Show flipbook-->
+      {%- include flipbook.html -%}
+      
+      <!-- Slide Show Script -->
+      <script src="/assets/Javascript/slideScript.js"></script>
+
+      <!-- Quick Description -->
+      <h2 class="page-tagline">Engine Programmer and Technical Artist</h2>
+    {%- endif -%}
+
+
+    <main class="page-content" aria-label="Content">
+      
+      <div id="wrappergrid">
+
+        <div id="wrapper-backgroundleft"></div>
+        <div id="wrapper-backgroundright"></div>
+        <div id="wrapper-left">{%- include left-bar.html -%}</div>
+        <div id="wrapper-main">{{ content }}</div>
+        <div id="wrapper-right">{%- include latest-posts.html -%}</div>
+        <div id="wrapper-footer">{%- include footer.html -%}</div>
+
+      </div>
+    </main>
+
+    
+
+  </body>
+
+</html>

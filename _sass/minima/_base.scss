@@ -1,0 +1,511 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure, div, span {
+  margin: 0;
+  padding: 0;
+}
+
+
+/**
+ * Basic styling
+ */
+body {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+     -moz-font-feature-settings: "kern" 1;
+       -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: 0;
+}
+
+
+
+/**
+ * `main` element
+ */
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+img.animated-gif {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+
+/**
+ * Figures
+ */
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: $small-font-size;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $base-font-weight;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+
+  .social-media-list &:hover {
+    text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  color: $grey-color;
+  border-left: 4px solid $grey-color-light;
+  padding-left: $spacing-unit / 2;
+  @include relative-font-size(1.125);
+  letter-spacing: -1px;
+  font-style: italic;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+
+
+/**
+ * Code formatting
+ */
+
+pre,
+code {
+  @include relative-font-size(0.9375);
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  background-color: #eef;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+  tab-size: 4;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+
+
+/**
+ * Wrapper old way of doing the central content
+ */
+.wrapper {
+  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit / 2;
+    padding-left: $spacing-unit / 2;
+  }
+}
+
+//New main layout system for pages which don't have columns
+#wrappergrid { 
+  display: grid;
+  grid-template-areas: 
+    "backgroundleft contentleft contentmain contentright backgroundright"
+    "contentfooter contentfooter contentfooter contentfooter contentfooter";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 200px 800px 200px 1fr;
+  grid-gap: 0px;
+  height: 100vh;
+  margin: 0;
+}
+
+//Responsive mobile layout
+@media all and (max-width: 1200px) {
+  #wrappergrid { 
+    grid-template-areas: 
+      "contentleft"
+      "contentmain"
+      "contentright"
+      "contentfooter";
+    grid-template-rows: 1fr 1fr 1fr 1fr;  
+    grid-template-columns: 1fr;
+ }
+
+ //Added as pre and auto scroll bars doesn't work with flexible layout
+ pre
+ {
+   white-space: pre-wrap;       /* Since CSS 2.1 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+ }
+}
+
+
+#wrapper-backgroundleft {
+  grid-area: backgroundleft;
+  background-color:  $backgorund-color2;
+}
+#wrapper-backgroundright {
+  grid-area: backgroundright;
+  background-color: $backgorund-color2;
+}
+#wrapper-left {
+  grid-area: contentleft;
+  background-color:  $sidebars;
+  text-align: center;
+  padding: 10px;
+}
+#wrapper-main {
+  grid-area: contentmain;
+  padding: 10px;
+}
+#wrapper-right { 
+  grid-area: contentright;   
+  background-color: $sidebars; 
+  text-align: center;
+  padding: 10px;
+}
+#wrapper-footer { 
+  grid-area: contentfooter;      
+}
+
+
+
+//New main layout for page that has columns
+#wrapperpagegrid { 
+  display: grid;
+  grid-template-areas: 
+    "backgroundleft contentleft contentmain contentmain contentright backgroundright"
+    "backgroundleft contentleft contentleft1 contentright1 contentright backgroundright"
+    "backgroundleft contentleft contentleft2 contentright2 contentright backgroundright"
+    "backgroundleft contentleft contentleft3 contentright3 contentright backgroundright"
+    "backgroundleft contentleft contentleft4 contentright4 contentright backgroundright"
+    "backgroundleft contentleft contentleft5 contentright5 contentright backgroundright"
+    "contentfooter contentfooter contentfooter contentfooter contentfooter contentfooter";
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 200px 400px 400px 200px 1fr;
+  grid-gap: 0px;
+  height: 100vh;
+  margin: 0;
+}
+
+//Responsive mobile layout
+@media all and (max-width: 1200px) {
+  #wrapperpagegrid { 
+    grid-template-areas: 
+      "backgroundleft contentleft contentleft backgroundright"
+      "backgroundleft contentmain contentmain backgroundright"
+      "backgroundleft contentleft1 contentright1 backgroundright"
+      "backgroundleft contentleft2 contentright2 backgroundright"
+      "backgroundleft contentleft3 contentright3 backgroundright"
+      "backgroundleft contentleft4 contentright4 backgroundright"
+      "backgroundleft contentleft5 contentright5 backgroundright"
+      "backgroundleft contentright contentright backgroundright"
+      "contentfooter contentfooter contentfooter contentfooter";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  
+    grid-template-columns: 1fr 400px 400px 1fr;
+ }
+}
+
+//Responsive mobile layout
+@media all and (max-width: 800px) {
+  #wrapperpagegrid { 
+    grid-template-areas: 
+      "contentleft"
+      "contentmain"
+      "contentleft1"
+      "contentright1"
+      "contentright2"
+      "contentleft2"
+      "contentleft3"
+      "contentright3"
+      "contentright4"
+      "contentleft4"
+      "contentleft5"
+      "contentright5"
+      "contentright"
+      "contentfooter";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  
+    grid-template-columns: 1fr;
+ }
+}
+
+
+#wrapperpage-backgroundleft {
+  grid-area: backgroundleft;
+  background-color:  $backgorund-color2;
+}
+#wrapperpage-backgroundright {
+  grid-area: backgroundright;
+  background-color: $backgorund-color2;
+}
+#wrapperpage-left {
+  grid-area: contentleft;
+  background-color:  $sidebars;
+  text-align: center;
+  padding: 10px;
+}
+#wrapperpage-contentmain {
+  grid-area: contentmain;
+  padding: 10px;
+}
+#wrapperpage-contentleft1 {
+  grid-area: contentleft1;
+  padding: 10px;
+}
+#wrapperhomepage-contentleft1 {
+  grid-area: contentleft1;
+  padding: 10px;
+  margin: 10px;
+
+}
+#wrapperpage-contentright1 {
+  grid-area: contentright1;
+  padding: 10px;
+}
+#wrapperhomepage-contentright1 {
+  grid-area: contentright1;
+  padding: 10px;
+  margin: 10px;
+
+}
+#wrapperpage-contentleft2 {
+  grid-area: contentleft2;
+  padding: 10px;
+}
+#wrapperhomepage-contentleft2 {
+  grid-area: contentleft2;
+  padding: 10px;
+  margin: 10px;
+}
+#wrapperpage-contentright2 {
+  grid-area: contentright2;
+  padding: 10px;
+}
+#wrapperhomepage-contentright2 {
+  grid-area: contentright2;
+  padding: 10px;
+  margin: 10px;
+}
+#wrapperpage-contentleft3 {
+  grid-area: contentleft3;
+  padding: 10px;
+}
+#wrapperpage-contentright3 {
+  grid-area: contentright3;
+  padding: 10px;
+}
+#wrapperpage-contentleft4 {
+  grid-area: contentleft4;
+  padding: 10px;
+}
+#wrapperpage-contentright4 {
+  grid-area: contentright4;
+  padding: 10px;
+}
+#wrapperpage-contentleft5 {
+  grid-area: contentleft5;
+  padding: 10px;
+}
+#wrapperpage-contentright5 {
+  grid-area: contentright5;
+  padding: 10px;
+}
+#wrapperpage-right { 
+  grid-area: contentright;   
+  background-color: $sidebars; 
+  text-align: center;
+  padding: 10px;
+}
+#wrapperpage-footer { 
+  grid-area: contentfooter;      
+}
+
+#mailinglistSub {
+  height: 135px;
+  width: 100%;
+}
+
+
+#generalEnquiry {
+  height: 535;
+  width: 100%;
+}
+
+#audioYoutubeClip {
+  height: 50;
+  width: 100%;
+}
+
+#ContentYoutubeClip {
+  height: 100%;
+  width: 100%;
+}
+
+#audioPlaylistYoutubeClip {
+  height: 200;
+  width: 100%;
+}
+
+
+
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/**
+ * Icons
+ */
+
+.svg-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    fill: #{$grey-color};
+    padding-right: 5px;
+    vertical-align: text-top;
+}
+
+.social-media-list {
+  li + li {
+    padding-top: 5px;
+  }
+}
+
+
+
+/**
+ * Tables
+ */
+table {
+  margin-bottom: $spacing-unit;
+  width: 100%;
+  text-align: $table-text-align;
+  color: lighten($text-color, 18%);
+  border-collapse: collapse;
+  border: 1px solid $grey-color-light;
+  tr {
+    &:nth-child(even) {
+      background-color: lighten($grey-color-light, 6%);
+    }
+  }
+  th, td {
+    padding: ($spacing-unit / 3) ($spacing-unit / 2);
+  }
+  th {
+    background-color: lighten($grey-color-light, 3%);
+    border: 1px solid darken($grey-color-light, 4%);
+    border-bottom-color: darken($grey-color-light, 12%);
+  }
+  td {
+    border: 1px solid $grey-color-light;
+  }
+}
+
+hr {
+  border-color:$grey-color-light;
+}

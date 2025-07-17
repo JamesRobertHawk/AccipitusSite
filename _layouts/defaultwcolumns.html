@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <!-- Slide Show or featured image header-->
+    {%- if page.image -%}
+      <!-- Show featured image -->
+      <img src="{{page.image | relative_url}}" alt="" class="page-featured-image">
+
+      {%- if page.title -%}
+        <h2 class="page-tagline">{{ page.title }}</h2>
+      {%- else -%}
+        <h2 class="page-tagline">Blog</h2>
+      {%- endif -%}
+    {%- else -%}
+      <!-- Show flipbook-->
+      {%- include flipbook.html -%}
+      
+      <!-- Slide Show Script -->
+      <script src="/assets/Javascript/slideScript.js"></script>
+
+      <!-- Quick Description -->
+      <h2 class="page-tagline">New adventures, done old.</h2>
+    {%- endif -%}
+
+
+    <main class="page-content" aria-label="Content">
+      
+      <div id="wrapperpagegrid">
+
+        <div id="wrapperpage-backgroundleft"></div>
+        <div id="wrapperpage-backgroundright"></div>
+        <div id="wrapperpage-left">{%- include left-bar.html -%}</div>
+        <!-- content needs to contain the content divs-->
+        {{ content }}
+        <div id="wrapperpage-right">{%- include latest-posts.html -%}</div>
+        <div id="wrapperpage-footer">{%- include footer.html -%}</div>
+
+      </div>
+    </main>
+
+    
+
+  </body>
+
+</html>
