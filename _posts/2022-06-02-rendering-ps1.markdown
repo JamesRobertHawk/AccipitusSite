@@ -526,8 +526,6 @@ Development of [Chaos The Devil]({% post_url 2021-08-11-chaos-the-devil-announce
 
 **Watch this space.**
 
-And if PS1 game dev is your thing, or if you have any questions, follow me on Twitter [@JamesRobertHawk](http://www.twitter.com/JamesRobertHawk) and continue to follow my development of [Chaos The Devil]({% post_url 2021-08-11-chaos-the-devil-announcement %}).
-
 I am going to create more articles like this during the development of the game. I am currently working on an audio pass so if that's your thing, drop back again soon.
 
 Thanks for your time, happy coding.
