@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Rendering in Playstation 1 style in OpenGL"
+title:  "Vertical slice postmortem for Chaos the devil."
 date:   2022-06-02 18:45:19 +0000
 categories: indiedev update
 image: /assets/Images/PlaystationRenderingArticleCover.jpg
